@@ -1,0 +1,31 @@
+OpenEmbedded/Yocto layer that extends and supplements Texas Instruments BSP layer.
+
+It is hosted on http://git.yoctoproject.org/cgit/cgit.cgi/meta-myir/ with the
+source repository at git://git.yoctoproject.org/meta-myir
+
+
+This layer depends on:
+
+URI: git://git.openembedded.org/openembedded-core
+layers: meta
+branch: master
+
+URI: git://git.yoctoproject.org/meta-arm
+layers: meta-arm
+branch: master
+
+URI: git://git.yoctoproject.org/meta-myir
+branch: master
+revision: HEAD
+layers: meta-myir-bsp
+
+
+Send pull requests, patches, comments or questions to:
+meta-myir@lists.yoctoproject.org
+
+Please note - meta-myir mailing list requires subscription for posting:
+https://lists.yoctoproject.org/g/meta-myir
+
+Maintainers:
+Ryan Eatmon <reatmon@ti.com>
+Denys Dmytriyenko <denys@konsulko.com>

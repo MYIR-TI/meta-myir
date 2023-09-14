@@ -21,11 +21,12 @@ do_install () {
     cp -r ${WORKDIR}/myir_* ${D}/etc
 }
 
-#SYSTEMD_PACKAGES = "${PN}"
-#SYSTEMD_SERVICE_${PN} = "mount-overlayfs.service"
+
 
 #inherit allarch systemd
 
 FILES:${PN} = "\
 	     /usr/bin   \
+	     /etc/myir_hostapd.conf \
+	     /etc/myir_udhcpd.conf \
 "

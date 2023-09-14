@@ -27,5 +27,5 @@ FILES:${PN} = "\
 	     /usr/bin   \
 "
 SYSTEMD_PACKAGES = "${PN}"
-SYSTEMD_SERVICE_${PN} = "app.service"
+SYSTEMD_SERVICE:${PN} = "app.service"
 SYSTEMD_AUTO_ENABLE = "enable"

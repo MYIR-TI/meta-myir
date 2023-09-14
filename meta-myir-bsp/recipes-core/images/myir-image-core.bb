@@ -1,0 +1,21 @@
+SUMMARY = "Arago TI SDK base image with test tools"
+
+DESCRIPTION = "Arago SDK base image suitable for initramfs containing\
+ comprehensive test tools."
+
+require myir-base-image.inc
+
+IMAGE_FSTYPES += "cpio.xz"
+
+ARAGO_BASE_IMAGE_EXTRA_INSTALL ?= ""
+
+IMAGE_INSTALL += "\
+    packagegroup-arago-base \
+    packagegroup-arago-console \
+    packagegroup-arago-base-tisdk \
+    ${VIRTUAL-RUNTIME_initramfs} \
+    ${@oe.utils.conditional('ARAGO_BRAND', 'mainline', 'ti-test', '', d)} \
+    ${ARAGO_BASE_IMAGE_EXTRA_INSTALL} \
+"
+
+export IMAGE_BASENAME = "myir-image-core"

@@ -195,6 +195,7 @@ do_deploy:append:k3r5 () {
 			install -m 644 $f ${DEPLOYDIR}/
 		fi
 	done
+	
 }
 
 do_deploy:append () {

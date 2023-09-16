@@ -49,7 +49,7 @@ UBI_VOLNAME = "rootfs"
 # List common SoC features, may need to add touchscreen for specific machines
 MACHINE_FEATURES = "kernel26 apm usbgadget usbhost vfat ext2 alsa ethernet pci"
 
-IMAGE_FSTYPES += "tar.xz wic.xz wic.bmap"
+IMAGE_FSTYPES += "tar.xz wic.xz wic.bmap ext4"
 
 IMAGE_BOOT_FILES ?= "${SPL_BINARYNAME} u-boot.${UBOOT_SUFFIX} tiboot3.bin"
 IMAGE_EFI_BOOT_FILES ?= "${IMAGE_BOOT_FILES}"

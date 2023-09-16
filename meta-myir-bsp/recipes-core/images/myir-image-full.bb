@@ -13,27 +13,23 @@ SYSTEMD_DEFAULT_TARGET = " \
 "
 
 IMAGE_INSTALL += "\
-    packagegroup-arago-base \
-    packagegroup-arago-console \
-    packagegroup-arago-base-tisdk \
-    ti-test \
-    ti-test-extras \
-    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-arago-tisdk-graphics','',d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-arago-tisdk-gtk','',d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-arago-tisdk-qte','',d)} \
-    ${@['','packagegroup-arago-tisdk-opencl'][oe.utils.all_distro_features(d, 'opencl', True, False) and bb.utils.contains('MACHINE_FEATURES', 'dsp', True, False, d)]} \
-    packagegroup-arago-tisdk-connectivity \
-    packagegroup-arago-tisdk-crypto \
-    packagegroup-arago-tisdk-matrix \
-    packagegroup-arago-tisdk-matrix-extra \
-    packagegroup-arago-tisdk-multimedia \
-    packagegroup-arago-tisdk-addons \
-    packagegroup-arago-tisdk-addons-extra \
-    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-arago-tisdk-hmi','packagegroup-arago-base-tisdk-server-extra',d)} \
-    ti-analytics \
-    ti-demos \
+    packagegroup-myir-base \
+    packagegroup-myir-console \
+    packagegroup-myir-base-tisdk \
+    myir-test \
+    myir-test-extras \
+    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-myir-tisdk-graphics','',d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-myir-tisdk-gtk','',d)} \
+    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-myir-tisdk-qte','',d)} \
+    ${@['','packagegroup-myir-tisdk-opencl'][oe.utils.all_distro_features(d, 'opencl', True, False) and bb.utils.contains('MACHINE_FEATURES', 'dsp', True, False, d)]} \
+    packagegroup-myir-tisdk-connectivity \
+    packagegroup-myir-tisdk-crypto \
+    packagegroup-myir-tisdk-multimedia \
+    packagegroup-myir-tisdk-addons \
+    packagegroup-myir-tisdk-addons-extra \
+    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-myir-tisdk-hmi','packagegroup-myir-base-tisdk-server-extra',d)} \
     ${ARAGO_DEFAULT_IMAGE_EXTRA_INSTALL} \
-    packagegroup-arago-tisdk-sysrepo \
+    packagegroup-myir-tisdk-sysrepo \
 "
 
 export IMAGE_BASENAME = "myir-image-full"
@@ -62,10 +58,7 @@ PYTHON2APPS = " \
     ${@bb.utils.contains("BBFILE_COLLECTIONS","browser-layer",bb.utils.contains('DISTRO_FEATURES','wayland',"${CHROMIUM}",'',d),'',d)} \
 "
 
-#PYTHON2APPS = " \
-#    ${@bb.utils.contains('DISTRO_FEATURES','opengl',"${EXTRABROWSERS}",'',d)} \
-#    ${@bb.utils.contains("BBFILE_COLLECTIONS","browser-layer",bb.utils.contains('DISTRO_FEATURES','wayland',"${CHROMIUM}",'',d),'',d)} \
-#"
+
 
 DEVTOOLS = " \
     linux-libc-headers-dev \
@@ -76,15 +69,13 @@ DEVTOOLS = " \
 
 OPENCL = " \
     ${@bb.utils.contains('MACHINE_FEATURES','dsp','ti-opencl','',d)} \
-    ${@bb.utils.contains('MACHINE_FEATURES','dsp','packagegroup-arago-tisdk-opencl-extra','',d)} \
+    ${@bb.utils.contains('MACHINE_FEATURES','dsp','packagegroup-myir-tisdk-opencl-extra','',d)} \
 "
 
 IMAGE_INSTALL += "\
     ${@oe.utils.all_distro_features(d, "opencl", "${OPENCL}")} \
     ${@bb.utils.contains("BBFILE_COLLECTIONS", "meta-python2", "${PYTHON2APPS}", "", d)} \
-    ${DEVTOOLS} \
     ${@bb.utils.contains('TUNE_FEATURES', 'armv7a', 'valgrind', '', d)} \
-    docker \
     auto-wifi \
     fgl297-fw \
     wifi-load \
@@ -92,4 +83,7 @@ IMAGE_INSTALL += "\
     ppp-quectel \
     ppp \
     quectel-cm \
+    hmi \
+    libmodbus \
+    wireless-tools \
 "

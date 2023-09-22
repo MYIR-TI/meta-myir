@@ -9,6 +9,7 @@ S = "${WORKDIR}"
 SRC_URI = "file://licenses/GPL-2 \
            file://home/root/hmi.sh \
 		   file://home/root/mxapp2 \
+		   file://home/root/lvgl_ethercat_demo \
 		   file://home/root/adl10-e \
 		   file://home/root/adl10-e_client \
 		   file://usr/share/fonts/ttf/msyh.ttc \
@@ -38,6 +39,7 @@ do_install (){
 	
 	install -m 755 ${WORKDIR}${ROOT_HOME}/hmi.sh ${D}${ROOT_HOME}/hmi.sh
 	install -m 755 ${WORKDIR}${ROOT_HOME}/mxapp2 ${D}${ROOT_HOME}/mxapp2
+	install -m 755 ${WORKDIR}${ROOT_HOME}/lvgl_ethercat_demo ${D}${ROOT_HOME}/lvgl_ethercat_demo
 	install -m 755 ${WORKDIR}${ROOT_HOME}/adl10-e ${D}${ROOT_HOME}/adl10-e
 	install -m 755 ${WORKDIR}${ROOT_HOME}/adl10-e_client ${D}${ROOT_HOME}/adl10-e_client
 	install -m 755 ${WORKDIR}${datadir}/fonts/ttf/msyh.ttc ${D}${datadir}/fonts/ttf/msyh.ttc

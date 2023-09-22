@@ -1,6 +1,6 @@
 [Unit]
 Description=auto run hmi after psplash-quit service
-After=weston.service
+After=getty@tty1.service weston.service
 
 [Service]
 Type=oneshot

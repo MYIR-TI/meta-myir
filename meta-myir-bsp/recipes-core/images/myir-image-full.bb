@@ -86,4 +86,9 @@ IMAGE_INSTALL += "\
     hmi \
     libmodbus \
     wireless-tools \
+    coreutils \
+    util-linux \
+    tslib \
+    fbv \
+    hwmac \
 "

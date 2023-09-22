@@ -1,0 +1,10 @@
+[Unit]
+Description=se050 and wifi driver
+After=systemd-user-sessions.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hwmac.sh
+
+[Install]
+WantedBy=multi-user.target

@@ -10,12 +10,24 @@ IMAGE_FSTYPES += "cpio.xz"
 ARAGO_BASE_IMAGE_EXTRA_INSTALL ?= ""
 
 IMAGE_INSTALL += "\
-    packagegroup-arago-base \
-    packagegroup-arago-console \
-    packagegroup-arago-base-tisdk \
+    packagegroup-myir-base \
+    packagegroup-myir-console \
+    packagegroup-myir-base-tisdk \
     ${VIRTUAL-RUNTIME_initramfs} \
     ${@oe.utils.conditional('ARAGO_BRAND', 'mainline', 'ti-test', '', d)} \
     ${ARAGO_BASE_IMAGE_EXTRA_INSTALL} \
+    auto-wifi \
+    fgl297-fw \
+    wifi-load \
+   	nxp-wlan-sdk \
+    ppp-quectel \
+    ppp \
+    quectel-cm \
+    coreutils \
+    util-linux \
+    tslib \
+    fbv \
+    hwmac \
 "
 
 export IMAGE_BASENAME = "myir-image-core"

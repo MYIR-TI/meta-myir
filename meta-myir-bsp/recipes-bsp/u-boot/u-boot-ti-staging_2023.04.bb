@@ -6,10 +6,10 @@ LIC_FILES_CHKSUM = "file://Licenses/README;md5=2ca5f2c35c8cc335f0a19756634782f1"
 
 PR = "r0"
 
-BRANCH = "ti-u-boot-2023.04"
+BRANCH = "myd-ym62x-uboot-2023.04"
 
-#SRCREV = "24098ea90dbaac7b16958e2f7d9f7a412ef1522a"
-SRCREV ="${AUTOREV}"
+SRCREV = "f4e7b03f15da6cd88d31d29a2b9b7e0812534554"
+#SRCREV ="${AUTOREV}"
 do_install:append:am62xx() {
 	install -d ${D}/boot
 	install -m 0644 ${S}/tools/logos/ti_logo_414x97_32bpp.bmp.gz ${D}/boot

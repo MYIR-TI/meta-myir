@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 MYIR_FIRMWARE_SRC ?= "git://github.com/MYiR-Dev/myir-firmware.git;protocol=https"
 SRCREV_myir-firmware = "65cbd809d32906c17c55ece3591be60e8c878735"
 SRC_URI += " \
-           ${MYIR_FIRMWARE_SRC};branch=main;destsuffix=myir-firmware;name=myir-firmware \
+           ${MYIR_FIRMWARE_SRC};branch=myd-ym62x;destsuffix=myir-firmware;name=myir-firmware \
 "
 
 do_install() {

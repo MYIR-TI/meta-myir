@@ -28,6 +28,7 @@ IMAGE_INSTALL += "\
     tslib \
     fbv \
     hwmac \
+   proftpd \
 "
 
 export IMAGE_BASENAME = "myir-image-core"

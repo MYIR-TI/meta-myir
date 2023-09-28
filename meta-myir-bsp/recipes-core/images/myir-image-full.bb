@@ -30,6 +30,7 @@ IMAGE_INSTALL += "\
     ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-myir-tisdk-hmi','packagegroup-myir-base-tisdk-server-extra',d)} \
     ${ARAGO_DEFAULT_IMAGE_EXTRA_INSTALL} \
     packagegroup-myir-tisdk-sysrepo \
+    proftpd \
 "
 
 export IMAGE_BASENAME = "myir-image-full"

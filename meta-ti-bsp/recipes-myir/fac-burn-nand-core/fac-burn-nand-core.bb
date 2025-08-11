@@ -1,0 +1,57 @@
+SUMMARY = "fac-burn-nand-core configure files"
+DESCRIPTION = "fac-burn-nand-core files"
+
+LICENSE = "GPL-2.0-only"
+LIC_FILES_CHKSUM = "file://licenses/GPL-2;md5=94d55d512a9ba36caa9b7df079bae19f"
+PV = "0.1"
+PR = "v1"
+
+DEPENDS += "systemd"
+inherit systemd
+
+SRC_URI = " \
+		file://usr/lib/systemd/system/fac-burn-nand-core.service \
+		file://root/mfgimage/burn_nand.sh \
+		file://licenses/GPL-2 \
+"
+
+S = "${WORKDIR}"
+
+dirs755= "/usr \
+		  /usr/lib \
+		  /usr/lib/systemd \
+		  /usr/lib/systemd/system \
+		  /root \
+		  /root/mfgimage \
+"
+
+do_install (){
+	for d in ${dirs755}; do
+		install -m 0755 -d ${D}$d
+	done
+
+	install -m 0644 ${WORKDIR}/usr/lib/systemd/system/fac-burn-nand-core.service ${D}/usr/lib/systemd/system 
+
+	install -m 0755 ${WORKDIR}/root/mfgimage/burn_nand.sh ${D}/root/mfgimage
+	install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62lx-nand/tiboot3.bin ${D}/root/mfgimage
+	install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62lx-nand/tispl.bin ${D}/root/mfgimage
+	install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62lx-nand/u-boot.img ${D}/root/mfgimage 
+    install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62lx-nand/Image ${D}/root/mfgimage 
+    install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62lx-nand/myd-ym62lx-nand.dtb ${D}/root/mfgimage         	
+	install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62lx-nand/myir-image-core-myd-ym62lx-nand.rootfs.ubi ${D}/root/mfgimage
+}
+
+FILES:${PN} = "\
+		/root \
+		/root/mfgimage \
+		/root/mfgimage/* \
+		/usr \
+		/usr/lib \
+		/usr/lib/systemd \
+		/usr/lib/systemd/system \
+		/usr/lib/systemd/system/fac-burn-nand-core.service \
+"
+SYSTEMD_PACKAGES = "${PN}"
+SYSTEMD_SERVICE:${PN} = "fac-burn-nand-core.service"
+SYSTEMD_AUTO_ENABLE = "enable"
+

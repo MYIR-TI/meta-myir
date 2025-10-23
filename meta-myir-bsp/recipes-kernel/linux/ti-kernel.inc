@@ -13,8 +13,10 @@ EXTRA_DTC_ARGS += "${@get_extra_dtc_args(d)}"
 KERNEL_DTBDEST = "${KERNEL_IMAGEDEST}/dtb"
 KERNEL_DTBVENDORED = "1"
 
-KERNEL_GIT_URI ?= "git://git.ti.com/git/ti-linux-kernel/ti-linux-kernel.git"
-KERNEL_GIT_PROTOCOL ?= "https"
+#KERNEL_GIT_URI ?= "git://git.ti.com/git/ti-linux-kernel/ti-linux-kernel.git"
+KERNEL_GIT_URI ?= "git:////workdir/linux/ti-linux-kernel"
+#KERNEL_GIT_PROTOCOL ?= "https"
+KERNEL_GIT_PROTOCOL ?= "file"
 KERNEL_GIT_BRANCH ?= "branch=${BRANCH}"
 
 KERNEL_DEFCONFIG ?= "file://defconfig"

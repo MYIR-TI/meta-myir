@@ -21,9 +21,10 @@ KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT} \
 
 S = "${WORKDIR}/git"
 
-BRANCH ?= "ti-linux-6.12.y"
+BRANCH ?= "myd-am62x"
 
-SRCREV ?= "e3e551586dfad357550da433969d6d9f458e06ce"
+SRCREV ?= "76ae61b67a6b4d64d54523fedf22d184da13a87a"
+#SRCREV = "${AUTOREV}"
 PV = "6.12.35+git"
 
 # Special configuration for remoteproc/rpmsg IPC modules

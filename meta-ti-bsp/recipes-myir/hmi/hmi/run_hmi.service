@@ -1,0 +1,13 @@
+[Unit]
+Description=myir-hmi service
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c '/usr/sbin/mxapp2'
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

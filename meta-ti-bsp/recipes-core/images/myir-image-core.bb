@@ -69,14 +69,18 @@ IMAGE_INSTALL += "\
     fbset \
     trace-cmd \
     valgrind \
+    rt-tests \
+    sqlite3 \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-libav \ 
     tzdata \
     procps \
     ${@oe.utils.conditional('MACHINE', 'myd-ym62lx-emmc',  'fw-env-emmc',  '', d)} \
     ${@oe.utils.conditional('MACHINE', 'myd-ym62lx-nand',  'fw-env-nand',  '', d)} \
     ap6256-firmware \
     auto-run \
-    measy-aging-test \
-    measy-listen-dev \
+    myir-tool \
+    lvgl \
 "
-
 export IMAGE_BASENAME = "myir-image-core${ARAGO_IMAGE_SUFFIX}"

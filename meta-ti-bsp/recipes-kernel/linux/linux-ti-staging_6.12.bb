@@ -21,7 +21,7 @@ KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT} \
 
 S = "${WORKDIR}/git"
 
-BRANCH ?= "feature-ti-linux-6.12.y-V11.00.15.02"
+BRANCH ?= "feature-ti-linux-6.12.y-V11.00.15.05"
 
 SRCREV ?= "${AUTOREV}"
 PV = "6.12.24+git"

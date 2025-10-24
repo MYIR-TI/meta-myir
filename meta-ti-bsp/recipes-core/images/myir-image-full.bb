@@ -77,7 +77,8 @@ IMAGE_INSTALL += "\
     rt-tests \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-bad \
-    gstreamer1.0-libav \ 
+    gstreamer1.0-libav \
+    gstreamer1.0-plugins-good \
     tzdata \
     procps \
     ${@oe.utils.conditional('MACHINE', 'myd-ym62lx-emmc',  'fw-env-emmc',  '', d)} \

@@ -1,0 +1,11 @@
+[Unit]
+Description=auto burn emmc
+After=remote-fs.target nss-user-lookup.target network.target home.mount
+
+[Service]
+Type=oneshot
+ExecStart=/root/mfgimage/burn_emmc.sh
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=auto burn nand
+After=remote-fs.target nss-user-lookup.target network.target home.mount
+
+[Service]
+Type=oneshot
+ExecStart=/root/mfgimage/burn_nand.sh
+
+
+[Install]
+WantedBy=multi-user.target

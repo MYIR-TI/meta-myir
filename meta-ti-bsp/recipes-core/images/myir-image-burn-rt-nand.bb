@@ -72,6 +72,7 @@ IMAGE_INSTALL += "\
     tzdata \
     procps \
     ap6256-firmware \
+    fac-burn-rt-nand-core \
 "
 
 export IMAGE_BASENAME = "myir-image-burn-rt-nand${ARAGO_IMAGE_SUFFIX}"

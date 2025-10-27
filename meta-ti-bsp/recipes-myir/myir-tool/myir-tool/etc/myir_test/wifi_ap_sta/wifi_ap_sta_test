@@ -1,4 +1,7 @@
 #!/bin/sh
+mkdir -p /var/lib/misc
+touch /var/lib/misc/udhcpd.leases
+chmod 644 /var/lib/misc/udhcpd.leases
 killall hostapd udhcpd 2>/dev/null
 sleep 1
 iw dev wlan0_ap del 2>/dev/null

@@ -21,9 +21,9 @@ KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT} \
 
 S = "${WORKDIR}/git"
 
-BRANCH ?= "myd-am62x"
+BRANCH ?= "myd-am62x-new"
 
-SRCREV ?= "76ae61b67a6b4d64d54523fedf22d184da13a87a"
+SRCREV ?= "a67be954f4b8ee5e60e37f2e705bcacee75eebff"
 #SRCREV = "${AUTOREV}"
 PV = "6.12.35+git"
 

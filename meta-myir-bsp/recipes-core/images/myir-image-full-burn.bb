@@ -5,9 +5,9 @@ DESCRIPTION = "Complete MYIR SDK filesystem image containing complete\
 
 LICENSE = "MIT"
 
+IMAGE_FSTYPES += "cpio.xz wic"
 COMPATIBLE_MACHINE = "ti-soc"
 
-IMAGE_FSTYPES += "cpio.xz wic"
 IMAGE_FEATURES += "package-management splash"
 
 # 4KB per 1 inode should be enough
@@ -71,7 +71,7 @@ IMAGE_INSTALL += "\
     packagegroup-arago-tisdk-sysrepo \
 "
 
-export IMAGE_BASENAME = "myir-image-full${ARAGO_IMAGE_SUFFIX}"
+export IMAGE_BASENAME = "myir-image-full-burn${ARAGO_IMAGE_SUFFIX}"
 
 # Disable ubi/ubifs as the filesystem requires more space than is
 # available on the HW.

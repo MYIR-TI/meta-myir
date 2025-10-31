@@ -114,6 +114,8 @@ IMAGE_INSTALL += "\
     ppp \
     fgl297-fw \
     ppp-quectel \
+    quectel-cm \
+    fw-env-emmc \
     auto-run \
     timezone-setup \
     ${MYIR_BASE_IMAGE_EXTRA_INSTALL} \

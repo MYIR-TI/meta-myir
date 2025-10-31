@@ -65,6 +65,8 @@ IMAGE_INSTALL += "\
     packagegroup-tools-bluetooth \
     fgl297-fw \
     ppp-quectel \
+    quectel-cm \
+    fw-env-emmc \
     auto-run \
     timezone-setup \
     ${MYIR_DEFAULT_IMAGE_EXTRA_INSTALL} \

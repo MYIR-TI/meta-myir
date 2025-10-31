@@ -113,6 +113,8 @@ IMAGE_INSTALL += "\
     ppp \
     fgl297-fw \
     ppp-quectel \
+    quectel-cm \
+    fw-env-emmc \
     auto-run \
     timezone-setup \
     fac-burn-emmc-core \

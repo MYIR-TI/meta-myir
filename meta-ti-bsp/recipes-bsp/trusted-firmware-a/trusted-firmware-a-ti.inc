@@ -2,8 +2,8 @@
 
 PV = "2.12+git"
 SRCREV_tfa = "${AUTOREV}"
-SRC_URI_TRUSTED_FIRMWARE_A = "git://migit.goho.co/MYD-YM62LX-LINUX/myir-ti-atf.git;protocol=https"
-SRCBRANCH = "feature-ti-master-V11.00.15.02"
+SRC_URI_TRUSTED_FIRMWARE_A = "git://github.com/MYIR-TI/myir-ti-atf.git;protocol=https"
+SRCBRANCH = "develop-ti-master-V11.00.15.02"
 SRC_URI = "${SRC_URI_TRUSTED_FIRMWARE_A};name=tfa;branch=${SRCBRANCH}"
 
 LIC_FILES_CHKSUM = "file://docs/license.rst;md5=1118e32884721c0be33267bd7ae11130"

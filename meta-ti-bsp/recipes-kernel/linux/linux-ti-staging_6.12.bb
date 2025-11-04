@@ -21,12 +21,12 @@ KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT} \
 
 S = "${WORKDIR}/git"
 
-BRANCH ?= "feature-ti-linux-6.12.y-V11.00.15.05"
+BRANCH ?= "develop-ti-linux-6.12.y-V11.00.15.05"
 
 SRCREV ?= "${AUTOREV}"
 PV = "6.12.24+git"
 
-KERNEL_GIT_URI = "git://migit.goho.co/MYD-YM62LX-LINUX/myir-ti-linux.git"
+KERNEL_GIT_URI = "git://github.com/MYIR-TI/myir-ti-linux.git"
 KERNEL_GIT_PROTOCOL = "https"
 
 # Special configuration for remoteproc/rpmsg IPC modules

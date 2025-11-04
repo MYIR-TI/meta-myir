@@ -81,6 +81,6 @@ IMAGE_INSTALL += "\
     ap6256-firmware \
     auto-run \
     myir-tool \
-    lvgl \
+    lvgl-demo \
 "
 export IMAGE_BASENAME = "myir-image-core${ARAGO_IMAGE_SUFFIX}"

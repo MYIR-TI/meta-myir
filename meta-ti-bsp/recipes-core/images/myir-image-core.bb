@@ -70,6 +70,7 @@ IMAGE_INSTALL += "\
     trace-cmd \
     valgrind \
     rt-tests \
+    stress-ng \
     sqlite3 \
     python3-pip \
     libmodbus \

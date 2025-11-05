@@ -78,6 +78,7 @@ IMAGE_INSTALL += "\
     libmodbus \
     v4l-utils \
     rt-tests \
+    stress-ng \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-libav \

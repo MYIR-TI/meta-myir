@@ -1,0 +1,13 @@
+[Unit]
+Description=myir-lvgl service
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c '/usr/sbin/lvgl_demo'
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

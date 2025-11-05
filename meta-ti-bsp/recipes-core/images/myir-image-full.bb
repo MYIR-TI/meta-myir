@@ -74,6 +74,9 @@ IMAGE_INSTALL += "\
     trace-cmd \
     valgrind \
     sqlite3 \
+    python3-pip \
+    libmodbus \
+    v4l-utils \
     rt-tests \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-bad \
@@ -82,7 +85,9 @@ IMAGE_INSTALL += "\
     tzdata \
     procps \
     ${@oe.utils.conditional('MACHINE', 'myd-ym62lx-emmc',  'fw-env-emmc',  '', d)} \
+    ${@oe.utils.conditional('MACHINE', 'myd-ym62lx-rt-emmc',  'fw-env-emmc',  '', d)} \
     ${@oe.utils.conditional('MACHINE', 'myd-ym62lx-nand',  'fw-env-nand',  '', d)} \
+    ${@oe.utils.conditional('MACHINE', 'myd-ym62lx-rt-nand',  'fw-env-nand',  '', d)} \
     ap6256-firmware \
     auto-run \
     qtbase \

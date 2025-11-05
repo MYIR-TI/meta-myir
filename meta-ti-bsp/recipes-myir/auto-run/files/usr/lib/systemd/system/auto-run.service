@@ -1,12 +1,14 @@
 [Unit]
 Description=auto run script
-After=network.target
+After=network-online.target systemd-udev-settle.service multi-user.target
 
 [Service]
-Type=oneshot
-ExecStartPre=/bin/sleep 5
+Type=simple
 ExecStart=/usr/bin/auto-run.sh
-
+StandardOutput=tty
+StandardOutput=append:/dev/ttyS0
+StandardError=append:/dev/ttyS0
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

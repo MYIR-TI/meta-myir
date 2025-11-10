@@ -138,6 +138,20 @@ check_rootfs(){
     fi
 }
 
+resize_partition() {
+    fdisk /dev/mmcblk0 << EOF
+        d
+        2
+        n
+        p
+        2
+
+
+        N
+        w
+EOF
+}
+
 burn_start_ing &
 LED_PID=$!
 sleep 1
@@ -146,7 +160,9 @@ burn_bootloader
 echo_fun "start burn wic "
 burn_wic
 # echo_fun "start reszie2fs emmc"
-# reszie2fs_emmc
+umount /run/media/root-mmcblk0p2
+resize_partition
+reszie2fs_emmc
 # check_rootfs
 enable_bootpart
 burn_succeed

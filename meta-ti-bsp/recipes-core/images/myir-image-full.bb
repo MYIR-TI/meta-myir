@@ -5,6 +5,8 @@ DESCRIPTION = "Arago SDK base image suitable for initramfs containing\
 
 require myir-image.inc
 
+inherit populate_sdk_qt6
+
 IMAGE_FSTYPES += "cpio.xz wic"
 
 ARAGO_BASE_IMAGE_EXTRA_INSTALL ?= ""

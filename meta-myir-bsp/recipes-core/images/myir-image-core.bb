@@ -107,6 +107,7 @@ IMAGE_INSTALL += "\
     sqlite3 \
     python3-pip \
     gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-libav \ 
     tzdata \
@@ -116,8 +117,13 @@ IMAGE_INSTALL += "\
     ppp-quectel \
     quectel-cm \
     fw-env-emmc \
+    myir-tool \
     auto-run \
     timezone-setup \
+    psplash \
+    lvgl-demo \
+    measy-listen-dev \
+    wpa-supplicant \
     ${MYIR_BASE_IMAGE_EXTRA_INSTALL} \
 "
 

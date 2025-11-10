@@ -7,6 +7,7 @@ LICENSE = "MIT"
 
 COMPATIBLE_MACHINE = "ti-soc"
 
+IMAGE_FSTYPES += "cpio.xz wic"
 IMAGE_FEATURES += "package-management splash"
 
 # 4KB per 1 inode should be enough
@@ -32,7 +33,7 @@ BAD_RECOMMENDATIONS += "${@oe.utils.conditional("INIT_MANAGER", "sysvinit", "", 
 
 inherit core-image remove-net-rules
 
-IMAGE_FSTYPES += "cpio.xz wic"
+IMAGE_FSTYPES += "cpio.xz"
 
 # Set default timezone to Shanghai
 DEFAULT_TIMEZONE = "Asia/Shanghai"
@@ -115,9 +116,11 @@ IMAGE_INSTALL += "\
     ppp-quectel \
     quectel-cm \
     fw-env-emmc \
+    myir-tool \
     auto-run \
     timezone-setup \
     fac-burn-emmc-core \
+    wpa-supplicant \
     ${MYIR_BASE_IMAGE_EXTRA_INSTALL} \
 "
 

@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://licenses/GPL-2;md5=94d55d512a9ba36caa9b7df079bae19f"
 PV = "0.1"
 PR = "v1"
 
-DEPENDS += "systemd"
+DEPENDS += "systemd myir-image-full"
 inherit systemd
 
 SRC_URI = " \
@@ -34,19 +34,27 @@ do_install (){
 
 	install -m 0755 ${WORKDIR}/root/mfgimage/burn_emmc.sh ${D}/root/mfgimage
 	
-	# Install boot files if they exist
-	if [ -f ${DEPLOY_DIR_IMAGE}/tiboot3-am62x-gp-evm.bin ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/tiboot3-am62x-gp-evm.bin ${D}/root/mfgimage/tiboot3.bin
+	# Install boot files from myd-am62x-emmc deploy directory if they exist
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin ${D}/root/mfgimage/tiboot3.bin
+	else
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin"
 	fi
-	if [ -f ${DEPLOY_DIR_IMAGE}/tispl.bin ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/tispl.bin ${D}/root/mfgimage
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin ${D}/root/mfgimage
+	else
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin"
 	fi
-	if [ -f ${DEPLOY_DIR_IMAGE}/u-boot.img ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/u-boot.img ${D}/root/mfgimage
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img ${D}/root/mfgimage
+	else
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img"
 	fi
 	
 	# Install rootfs wic image from myd-am62x-emmc deploy directory
+	# Remove old file first to ensure it's updated
 	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-full-myd-am62x-emmc.rootfs.wic ]; then
+		rm -f ${D}/root/mfgimage/rootfs.wic
 		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-full-myd-am62x-emmc.rootfs.wic ${D}/root/mfgimage/rootfs.wic
 	else
 		bbwarn "WIC image not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-full-myd-am62x-emmc.rootfs.wic"

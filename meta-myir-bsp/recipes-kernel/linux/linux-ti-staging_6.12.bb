@@ -23,7 +23,7 @@ S = "${WORKDIR}/git"
 
 BRANCH ?= "myd-am62x-new"
 
-SRCREV ?= "a67be954f4b8ee5e60e37f2e705bcacee75eebff"
+SRCREV ?= "c94135b9bbffec5bd746f33c3988beca17a840e7"
 #SRCREV = "${AUTOREV}"
 PV = "6.12.35+git"
 

@@ -111,7 +111,7 @@ burn_bootloader(){
 
 burn_wic(){
     # start_time=`date +%s`
-    dd if=/root/mfgimage/myir-image-full-myd-am62x-emmc.rootfs.wic   of=/dev/mmcblk0
+    dd if=/root/mfgimage/rootfs.wic   of=/dev/mmcblk0
     cmd_check $? "burn wic faild"
     sync
     # end_time=`date +%s`

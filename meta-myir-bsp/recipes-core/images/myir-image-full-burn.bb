@@ -5,9 +5,9 @@ DESCRIPTION = "Complete MYIR SDK filesystem image containing complete\
 
 LICENSE = "MIT"
 
-IMAGE_FSTYPES += "cpio.xz wic"
 COMPATIBLE_MACHINE = "ti-soc"
 
+IMAGE_FSTYPES += "cpio.xz wic"
 IMAGE_FEATURES += "package-management splash"
 
 # 4KB per 1 inode should be enough
@@ -38,39 +38,97 @@ DEFAULT_TIMEZONE = "Asia/Shanghai"
 
 MYIR_DEFAULT_IMAGE_EXTRA_INSTALL ?= ""
 
-# we're assuming some display manager is being installed with opengl
-SYSTEMD_DEFAULT_TARGET = "${@bb.utils.contains('DISTRO_FEATURES','opengl','graphical.target','multi-user.target',d)}"
-
 IMAGE_INSTALL += "\
     packagegroup-arago-base \
     packagegroup-arago-console \
     kernel-modules \
-    ti-test \
-    ti-test-extras \
-    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-arago-tisdk-graphics','',d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES','opengl','packagegroup-arago-tisdk-gtk','',d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES','opencl','packagegroup-arago-opencl','',d)} \
-    ${@bb.utils.contains('DISTRO_FEATURES','vulkan','packagegroup-arago-vulkan','',d)} \
-    packagegroup-arago-tisdk-connectivity \
-    packagegroup-arago-tisdk-crypto \
-    packagegroup-arago-tisdk-multimedia \
-    packagegroup-arago-tisdk-addons \
-    packagegroup-arago-tisdk-addons-extra \
-    packagegroup-arago-gst-sdk-target \
-    resize-rootfs \
-    tslib \
-    tslib-tests \
-    u-boot-fw-utils \
+    memtester \
+    evtest \
+    mmc-utils \
+    alsa-utils \
+    wpa-supplicant \
+    hostapd \
+    e2fsprogs \
+    e2fsprogs-resize2fs \
+    bluez-tools \
     bluez5 \
     packagegroup-tools-bluetooth \
+    libdrm \
+    bc \
+    iw \
+    watchdog \
+    k3conf \
+    lsof \
+    tslib \
+    tslib-tests \
+    ntp \
+    gdb \
+    zlib \
+    libyaml \
+    libubootenv \
+    u-boot-fw-utils \
+    u-boot-tools \
+    mtd-utils \
+    ethtool \
+    net-tools \
+    iptables \
+    iproute2 \
+    busybox \
+    bridge-utils \
+    tcpdump \
+    i2c-tools \
+    can-utils \
+    microcom \
+    serialcheck \
+    util-linux \
+    tar \
+    gzip \
+    bzip2 \
+    bash \
+    libinput \
+    coreutils \
+    ncurses \
+    readline \
+    grep \
+    sed \
+    gawk \
+    vim \
+    fbset \
+    trace-cmd \
+    sqlite3 \
+    python3-pip \
+    libmodbus \
+    rt-tests \
+    v4l-utils \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-libav \
+    resize-rootfs \
+    tzdata \
+    procps \
+    ppp \
     fgl297-fw \
     ppp-quectel \
     quectel-cm \
     fw-env-emmc \
     auto-run \
+    weston \
+    weston-init \
+    weston-examples \
+    qtbase \
+    qtsvg \
+    qtdeclarative \
+    qtconnectivity \
+    qtgraphs \
+    qtmultimedia \
+    qtvirtualkeyboard \
+    lvgl-demo \
+    hmi \
+    myir-tool \
     timezone-setup \
+    fac-burn-emmc-full \
+    wpa-supplicant \
     ${MYIR_DEFAULT_IMAGE_EXTRA_INSTALL} \
-    packagegroup-arago-tisdk-sysrepo \
 "
 
 export IMAGE_BASENAME = "myir-image-full-burn${ARAGO_IMAGE_SUFFIX}"
@@ -79,31 +137,7 @@ export IMAGE_BASENAME = "myir-image-full-burn${ARAGO_IMAGE_SUFFIX}"
 # available on the HW.
 IMAGE_FSTYPES:remove:omapl138 = "ubifs ubi"
 
-DEVTOOLS = " \
-    linux-libc-headers-dev \
-    build-essential \
-    packagegroup-core-tools-debug \
-    git \
-    dtc \
-"
 
-IMAGE_INSTALL += "\
-    ${DEVTOOLS} \
-    strace \
-    ltrace \
-    gdb \
-    gdbserver \
-    valgrind \
-    iproute2 \
-    evtest \
-    memtester \
-    ppp \
-    fgl297-fw \
-    docker \
-"
 
-# Platform-specific packages for MYIR boards
-IMAGE_INSTALL:append:am62lxx = " mosquitto libmosquitto1 libmosquittopp1 mosquitto-clients mosquitto-dev"
-IMAGE_INSTALL:append:am62xx = " ti-gst-plugins-source ti-gst-plugins-dev ti-gst-utils nxp-wlan-sdk"
-IMAGE_INSTALL:append:am62pxx = " ti-gst-plugins-source ti-gst-plugins-dev ti-gst-utils"
-IMAGE_INSTALL:remove:am62dxx = " packagegroup-arago-tisdk-graphics"
+IMAGE_INSTALL:remove = "docker"
+

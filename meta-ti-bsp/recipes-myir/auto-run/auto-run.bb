@@ -15,6 +15,7 @@ SRC_URI = " \
            	file://usr/share/myir/Music/ \
            	file://usr/share/myir/Capture/ \
 		file://usr/lib/systemd/system/auto-run.service \
+	  	file://etc \
 		file://licenses/GPL-2 \
 "
 
@@ -30,6 +31,7 @@ dirs755= "/usr \
 		  /usr/share/myir/Video \
 		  /usr/share/myir/Music \
 		  /usr/share/myir/Capture \
+		  /etc \
 "
 
 do_install (){
@@ -41,7 +43,8 @@ do_install (){
 	install -m 0755 ${WORKDIR}/usr/share/myir/Video/* ${D}/usr/share/myir/Video
 	install -m 0755 ${WORKDIR}/usr/share/myir/Music/* ${D}/usr/share/myir/Music
 	install -m 0755 ${WORKDIR}/usr/share/myir/Capture/* ${D}/usr/share/myir/Capture
-	install -m 0644 ${WORKDIR}/usr/lib/systemd/system/auto-run.service ${D}/usr/lib/systemd/system 
+	install -m 0644 ${WORKDIR}/usr/lib/systemd/system/auto-run.service ${D}/usr/lib/systemd/system
+	install -m 0755 ${WORKDIR}/etc/profile ${D}/etc
 }
 
 FILES:${PN} = "\
@@ -57,6 +60,8 @@ FILES:${PN} = "\
 		/usr/lib/systemd \
 		/usr/lib/systemd/system \
 		/usr/lib/systemd/system/auto-run.service \
+		/etc/ \
+		/etc/profile \
 "
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "auto-run.service"

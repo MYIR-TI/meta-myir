@@ -119,6 +119,7 @@ burn_wic(){
 }
 
 reszie2fs_emmc(){
+    e2fsck -f -y /dev/mmcblk0p2
     resize2fs /dev/mmcblk0p2
     cmd_check $? "reszie2fs mmc faild"
     sync

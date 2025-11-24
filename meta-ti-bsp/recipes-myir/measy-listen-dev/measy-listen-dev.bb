@@ -6,17 +6,9 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 PV = "0.1"
 PR = "v1"
 
-SRCREV = "${AUTOREV}"
-SRC_URI = "git://migit.goho.co/BSP/MEasyListen-DEV.git;protocol=https;branch=main"
-
-S = "${WORKDIR}/git"
-
-MEASYAGINGTEST_APP="MEasyListen-DEV"
-
-do_compile () {
-
-	make
-}
+SRC_URI = "file://usr/share/myir_testunit/MEasyListen-DEV \
+"
+S = "${WORKDIR}"
 
 dirs755= "/usr \
           /usr/share \
@@ -28,7 +20,7 @@ do_install (){
 		install -m 0755 -d ${D}$d
 	done
 
-	install -m 0755 ${S}/${MEASYAGINGTEST_APP} ${D}/usr/share/myir_testunit/
+	install -m 0755 ${S}/usr/share/myir_testunit/MEasyListen-DEV ${D}/usr/share/myir_testunit/
 }
 
 FILES:${PN} = "\

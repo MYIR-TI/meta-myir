@@ -6,28 +6,19 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 PV = "0.1"
 PR = "v1"
 
-SRCREV = "${AUTOREV}"
-SRC_URI = "git://migit.goho.co/BSP/MEasyAgingTest.git;protocol=https;branch=develop"
+SRC_URI = "file://usr/share/myir_testunit/MEasyTest-DEV \
+	   file://usr/lib/libmyir_code.so \
+"
 
-S = "${WORKDIR}/git"
-
-MEASYAGINGTEST_APP="MEasyTest-DEV"
-
-## Specify the corresponding myir_core.c based on different boards
-BOARD_MYIRCODE="MYC-YM62LX_myir_code.c"
-
-do_compile () {
-	cp ${S}/myir_code/${BOARD_MYIRCODE}  ${S}/myir_code/myir_code.c  -rf
-	make
-}
+S = "${WORKDIR}"
 
 do_install (){
 	install -m 0755 -d ${D}/usr/share/
 	install -m 0755 -d ${D}/usr/share/myir_testunit/
 	install -m 0755 -d ${D}/usr/lib/
 
-	install -m 0755 ${S}/${MEASYAGINGTEST_APP} ${D}/usr/share/myir_testunit/
-	install -m 0755 ${S}/lib/libmyir_code.so ${D}/usr/lib/
+	install -m 0755 ${S}/usr/share/myir_testunit/MEasyTest-DEV  ${D}/usr/share/myir_testunit/
+	install -m 0755 ${S}/usr/lib/libmyir_code.so ${D}/usr/lib/
 }
 
 FILES:${PN} = "\

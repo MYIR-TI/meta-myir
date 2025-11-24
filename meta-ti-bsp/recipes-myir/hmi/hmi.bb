@@ -11,7 +11,7 @@ SRC_URI= "git://github.com/MYiR-Dev/mxapp.git;protocol=https;branch=MXAPP-QT6 \
         file://run_hmi.service \
 "
 
-SRCREV = "c61e58655402003292b05edbf8c2415eff4420ba"
+SRCREV = "36c64a39ce51e18b846b00f0cbe6100cc2542066"
 
 inherit qt6-qmake
 inherit systemd
@@ -26,7 +26,7 @@ do_install() {
     install -d ${D}/usr/share/fonts/ttf/
     install -d ${D}/usr/share/myir/
 
-    install -m 755 ${S}/mxapp2 ${D}${sbindir}/mxapp2
+    install -m 755 ${WORKDIR}/build/mxapp2 ${D}${sbindir}/mxapp2
     install -m 755 ${WORKDIR}/usr/share/fonts/ttf/msyh.ttc ${D}/usr/share/fonts/ttf/msyh.ttc
     install -m 755 ${WORKDIR}${bindir}/run_hmi.sh ${D}${bindir}/run_hmi.sh
     install -m 644 ${WORKDIR}/run_hmi.service ${D}${systemd_system_unitdir}/run_hmi.service

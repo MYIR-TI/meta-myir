@@ -18,8 +18,8 @@ export IMAGE_BASENAME = "arago-image${ARAGO_IMAGE_SUFFIX}"
 
 IMAGE_LINGUAS = ""
 
-TOOLCHAIN_HOST_TASK:append = " nativesdk-buildtools-perl-dummy"
-SDK_PACKAGE_ARCHS += "buildtools-dummy-${SDKPKGSUFFIX}"
+#TOOLCHAIN_HOST_TASK:append = " nativesdk-buildtools-perl-dummy"
+#SDK_PACKAGE_ARCHS += "buildtools-dummy-${SDKPKGSUFFIX}"
 
 BAD_RECOMMENDATIONS += " \
     libulm-dev \

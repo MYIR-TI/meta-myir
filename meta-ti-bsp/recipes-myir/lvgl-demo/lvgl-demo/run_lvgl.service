@@ -4,8 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c '/usr/sbin/lvgl_demo'
-
+ExecStart=/bin/sh -c 'pkill -9 psplash; /usr/sbin/lvgl_demo'
 StandardOutput=journal
 StandardError=journal
 

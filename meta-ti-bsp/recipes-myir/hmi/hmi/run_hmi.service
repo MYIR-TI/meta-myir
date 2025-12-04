@@ -4,7 +4,7 @@ After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c '/usr/sbin/mxapp2'
+ExecStart=/bin/sh -c 'pkill -9 psplash; /usr/sbin/mxapp2'
 
 StandardOutput=journal
 StandardError=journal

@@ -78,6 +78,12 @@ IMAGE_INSTALL += "\
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-libav \ 
+    pulseaudio \
+    pulseaudio-server \
+    pulseaudio-misc \
+    pulseaudio-module-bluez5-discover \
+    pulseaudio-module-bluez5-device \
+    pulseaudio-service \
     tzdata \
     procps \
     ${@oe.utils.conditional('MACHINE', 'myd-ym62lx-emmc',  'fw-env-emmc',  '', d)} \

@@ -16,6 +16,7 @@ SRC_URI = " \
            	file://usr/share/myir/Capture/ \
 		file://usr/lib/systemd/system/auto-run.service \
 	  	file://etc \
+		file://etc/pulse/system.pa.d/ \
 		file://licenses/GPL-2 \
 "
 
@@ -32,6 +33,7 @@ dirs755= "/usr \
 		  /usr/share/myir/Music \
 		  /usr/share/myir/Capture \
 		  /etc \
+		  /etc/pulse/system.pa.d \
 "
 
 do_install (){
@@ -45,6 +47,7 @@ do_install (){
 	install -m 0755 ${WORKDIR}/usr/share/myir/Capture/* ${D}/usr/share/myir/Capture
 	install -m 0644 ${WORKDIR}/usr/lib/systemd/system/auto-run.service ${D}/usr/lib/systemd/system
 	install -m 0755 ${WORKDIR}/etc/profile ${D}/etc
+	install -m 0644 ${WORKDIR}/etc/pulse/system.pa.d/10-bluetooth.pa ${D}/etc/pulse/system.pa.d
 }
 
 FILES:${PN} = "\
@@ -62,6 +65,7 @@ FILES:${PN} = "\
 		/usr/lib/systemd/system/auto-run.service \
 		/etc/ \
 		/etc/profile \
+		/etc/pulse/system.pa.d/10-bluetooth.pa \
 "
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "auto-run.service"

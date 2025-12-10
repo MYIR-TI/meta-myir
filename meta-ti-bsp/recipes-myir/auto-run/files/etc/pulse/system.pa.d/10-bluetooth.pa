@@ -1,0 +1,5 @@
+.nofail
+.ifexists module-bluez5-discover.so
+load-module module-bluez5-discover
+.endif
+.fail

@@ -1,2 +1,7 @@
 #!/bin/sh
-gst-play-1.0 --videosink=fbdevsink --audiosink="alsasink device=hw:0,0" /usr/share/myir/Video/myir.mp4
+export XDG_RUNTIME_DIR=/run/user/1000
+export WAYLAND_DISPLAY=wayland-1
+chmod 666 /run/user/1000/wayland-1
+gst-play-1.0 /usr/share/myir/Video/myir.mp4 \
+  --videosink=waylandsink \
+  --audiosink="alsasink device=hw:0,0"

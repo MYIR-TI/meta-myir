@@ -40,6 +40,7 @@ FILES:${PN} = "/etc/myir_test/myir_audio_play \
 	       /etc/myir_test/wifi_ap_sta/* \
 	       /etc/ \
 	       /usr/sbin/* \
+	       /usr/sbin/framebuffer_test \
 	       /usr/lib/locale/zh_CN/* \
 	       /usr/lib/locale/en_US/* \
 	       /usr/lib/locale/en_GB/* \

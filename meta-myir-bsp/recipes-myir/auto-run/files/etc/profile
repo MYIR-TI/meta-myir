@@ -72,5 +72,5 @@ fi
 export LANG=en_US.UTF-8  
 export LC_ALL=en_US.UTF-8
 export PATH PS1 OPIEDIR QPEDIR QTDIR EDITOR TERM
-
+amixer set Headphone 100% > /dev/null 2>&1
 umask 022

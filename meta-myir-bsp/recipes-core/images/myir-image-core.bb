@@ -104,6 +104,7 @@ IMAGE_INSTALL += "\
     trace-cmd \
     valgrind \
     rt-tests \
+    stress-ng \
     sqlite3 \
     python3-pip \
     gstreamer1.0-plugins-base \
@@ -121,6 +122,7 @@ IMAGE_INSTALL += "\
     auto-run \
     timezone-setup \
     psplash \
+    pulseaudio \
     lvgl-demo \
     measy-listen-dev \
     wpa-supplicant \

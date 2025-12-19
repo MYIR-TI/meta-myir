@@ -1,7 +1,7 @@
-SUMMARY = "MYIR SDK full filesystem image"
+SUMMARY = "MYIR SDK full filesystem image (RT)"
 
 DESCRIPTION = "Complete MYIR SDK filesystem image containing complete\
- applications and packages to entitle the SoC."
+ applications and packages to entitle the SoC (RT version)."
 
 LICENSE = "MIT"
 
@@ -133,12 +133,12 @@ IMAGE_INSTALL += "\
     timezone-setup \
     psplash \
     measy-listen-dev \
-    fac-burn-emmc-full \
+    fac-burn-emmc-full-rt \
     wpa-supplicant \
     ${MYIR_DEFAULT_IMAGE_EXTRA_INSTALL} \
 "
 
-export IMAGE_BASENAME = "myir-image-full-burn${ARAGO_IMAGE_SUFFIX}"
+export IMAGE_BASENAME = "myir-image-full-burn-rt${ARAGO_IMAGE_SUFFIX}"
 
 # Disable ubi/ubifs as the filesystem requires more space than is
 # available on the HW.
@@ -147,4 +147,5 @@ IMAGE_FSTYPES:remove:omapl138 = "ubifs ubi"
 
 
 IMAGE_INSTALL:remove = "docker"
+
 

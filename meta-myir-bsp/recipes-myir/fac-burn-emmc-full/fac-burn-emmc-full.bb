@@ -4,10 +4,15 @@ DESCRIPTION = "fac-burn-emmc-full files"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://licenses/GPL-2;md5=94d55d512a9ba36caa9b7df079bae19f"
 PV = "0.1"
-PR = "v1"
+PR = "v2"
 
 DEPENDS += "systemd myir-image-full"
 inherit systemd
+
+# Ensure image/boot files are built before we install them
+do_install[depends] += "myir-image-full:do_image_complete"
+# Always run do_install to pick up updated image files
+do_install[nostamp] = "1"
 
 SRC_URI = " \
 		file://usr/lib/systemd/system/fac-burn-emmc-full.service \

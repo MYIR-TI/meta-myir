@@ -104,9 +104,11 @@ IMAGE_INSTALL += "\
     trace-cmd \
     valgrind \
     rt-tests \
+    stress-ng \
     sqlite3 \
     python3-pip \
     gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-libav \ 
     tzdata \
@@ -114,11 +116,15 @@ IMAGE_INSTALL += "\
     ppp \
     fgl297-fw \
     ppp-quectel \
+    pulseaudio \
     quectel-cm \
     fw-env-emmc \
     myir-tool \
     auto-run \
     timezone-setup \
+    psplash \
+    lvgl-demo \
+    measy-listen-dev \
     fac-burn-emmc-core \
     wpa-supplicant \
     ${MYIR_BASE_IMAGE_EXTRA_INSTALL} \

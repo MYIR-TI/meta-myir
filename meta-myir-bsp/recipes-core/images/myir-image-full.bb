@@ -41,6 +41,7 @@ MYIR_DEFAULT_IMAGE_EXTRA_INSTALL ?= ""
 IMAGE_INSTALL += "\
     packagegroup-arago-base \
     packagegroup-arago-console \
+    packagegroup-arago-tisdk-addons \
     kernel-modules \
     memtester \
     evtest \
@@ -100,6 +101,7 @@ IMAGE_INSTALL += "\
     perl \
     libmodbus \
     rt-tests \
+    stress-ng \
     v4l-utils \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
@@ -111,12 +113,14 @@ IMAGE_INSTALL += "\
     ppp \
     fgl297-fw \
     ppp-quectel \
+    pulseaudio \
+    pulseaudio-server \
+    pulseaudio-misc \
     quectel-cm \
     fw-env-emmc \
     auto-run \
     weston \
-    weston-init \
-    weston-examples \
+    packagegroup-arago-tisdk-graphics \
     qtbase \
     qtsvg \
     qtdeclarative \

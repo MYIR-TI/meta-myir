@@ -1,7 +1,7 @@
-SUMMARY = "MYIR SDK full filesystem image"
+SUMMARY = "MYIR SDK base image with test tools (RT)"
 
-DESCRIPTION = "Complete MYIR SDK filesystem image containing complete\
- applications and packages to entitle the SoC."
+DESCRIPTION = "MYIR SDK base image suitable for initramfs containing\
+ comprehensive test tools (RT version)."
 
 LICENSE = "MIT"
 
@@ -30,19 +30,24 @@ BAD_RECOMMENDATIONS += " \
     coreutils-dev \
 "
 BAD_RECOMMENDATIONS += "${@oe.utils.conditional("INIT_MANAGER", "sysvinit", "", "busybox-syslog", d)}"
-inherit populate_sdk_qt6 features_check
+
 inherit core-image remove-net-rules
+
+IMAGE_FSTYPES += "cpio.xz"
 
 # Set default timezone to Shanghai
 DEFAULT_TIMEZONE = "Asia/Shanghai"
 
-MYIR_DEFAULT_IMAGE_EXTRA_INSTALL ?= ""
+MYIR_BASE_IMAGE_EXTRA_INSTALL ?= ""
 
 IMAGE_INSTALL += "\
     packagegroup-arago-base \
     packagegroup-arago-console \
-    packagegroup-arago-tisdk-addons \
+    ${@oe.utils.conditional('ARAGO_BRAND', 'mainline', 'ti-test', '', d)} \
     kernel-modules \
+    weston \
+    weston-init \
+    weston-examples \
     memtester \
     evtest \
     mmc-utils \
@@ -53,7 +58,6 @@ IMAGE_INSTALL += "\
     e2fsprogs-resize2fs \
     bluez-tools \
     bluez5 \
-    packagegroup-tools-bluetooth \
     libdrm \
     bc \
     iw \
@@ -78,15 +82,16 @@ IMAGE_INSTALL += "\
     bridge-utils \
     tcpdump \
     i2c-tools \
+    wpa-supplicant \
     can-utils \
     microcom \
     serialcheck \
     util-linux \
+    e2fsprogs \
     tar \
     gzip \
     bzip2 \
     bash \
-    libinput \
     coreutils \
     ncurses \
     readline \
@@ -94,57 +99,36 @@ IMAGE_INSTALL += "\
     sed \
     gawk \
     vim \
+    libdrm \
     fbset \
     trace-cmd \
-    sqlite3 \
-    python3-pip \
-    perl \
-    libmodbus \
+    valgrind \
     rt-tests \
     stress-ng \
-    v4l-utils \
+    sqlite3 \
+    python3-pip \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-bad \
-    gstreamer1.0-libav \
-    resize-rootfs \
+    gstreamer1.0-libav \ 
     tzdata \
     procps \
     ppp \
     fgl297-fw \
     ppp-quectel \
     pulseaudio \
-    pulseaudio-server \
-    pulseaudio-misc \
     quectel-cm \
     fw-env-emmc \
-    auto-run \
-    weston \
-    packagegroup-arago-tisdk-graphics \
-    qtbase \
-    qtsvg \
-    qtdeclarative \
-    qtconnectivity \
-    qtgraphs \
-    qtmultimedia \
-    qtvirtualkeyboard \
-    hmi \
     myir-tool \
+    auto-run \
     timezone-setup \
     psplash \
+    lvgl-demo \
     measy-listen-dev \
-    fac-burn-emmc-full \
+    fac-burn-emmc-core-rt \
     wpa-supplicant \
-    ${MYIR_DEFAULT_IMAGE_EXTRA_INSTALL} \
+    ${MYIR_BASE_IMAGE_EXTRA_INSTALL} \
 "
 
-export IMAGE_BASENAME = "myir-image-full-burn${ARAGO_IMAGE_SUFFIX}"
-
-# Disable ubi/ubifs as the filesystem requires more space than is
-# available on the HW.
-IMAGE_FSTYPES:remove:omapl138 = "ubifs ubi"
-
-
-
-IMAGE_INSTALL:remove = "docker"
+export IMAGE_BASENAME = "myir-image-core-burn-rt${ARAGO_IMAGE_SUFFIX}"
 

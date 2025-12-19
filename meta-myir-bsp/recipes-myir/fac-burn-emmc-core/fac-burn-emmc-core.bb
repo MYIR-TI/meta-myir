@@ -9,6 +9,9 @@ PR = "v1"
 DEPENDS += "systemd"
 inherit systemd
 
+# Ensure do_install always runs fresh (no sstate cache)
+do_install[nostamp] = "1"
+
 SRC_URI = " \
 		file://usr/lib/systemd/system/fac-burn-emmc-core.service \
 		file://root/mfgimage/burn_emmc.sh \

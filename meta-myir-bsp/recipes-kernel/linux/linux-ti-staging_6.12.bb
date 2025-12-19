@@ -21,9 +21,13 @@ KERNEL_EXTRA_ARGS += "LOADADDR=${UBOOT_ENTRYPOINT} \
 
 S = "${WORKDIR}/git"
 
-BRANCH ?= "myd-am62x-new"
+# Use MYIR linux repo/branch, override defaults from meta-ti ti-kernel.inc
+KERNEL_GIT_URI = "git://github.com/MYIR-TI/myir-ti-linux.git"
+KERNEL_GIT_PROTOCOL = "https"
 
-SRCREV ?= "c94135b9bbffec5bd746f33c3988beca17a840e7"
+BRANCH ?= "develop-ym62x-linux-6.12.y_11.01.05.03"
+
+SRCREV ?= "a3335542101189fffde33be4f30346aac3d00e07"
 #SRCREV = "${AUTOREV}"
 PV = "6.12.35+git"
 

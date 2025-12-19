@@ -4,6 +4,10 @@ include ${@ 'recipes-bsp/u-boot/ti-extras.inc' if d.getVar('TI_EXTRAS') else ''}
 
 PR = "r0"
 
-BRANCH = "myir-new"
+# Use MYIR u-boot repo/branch, override defaults from meta-ti u-boot-ti.inc
+UBOOT_GIT_URI = "git://github.com/MYIR-TI/myir-ti-uboot.git"
+UBOOT_GIT_PROTOCOL = "https"
 
-SRCREV = "4fc1e6cf861d552361b1d38e4252d89c3da2c742"
+BRANCH = "develop-ym62x-u-boot-2025.01_V11.01.05.03"
+
+SRCREV = "d73100b4a740f5d10d0b671a57017e0cb239f27e"

@@ -7,13 +7,15 @@ S = "${WORKDIR}/git"
 
 
 
-SRC_URI = "git:///workdir/mxapp2/MXAPP2;branch=MXAPP-QT6;protocol=file \
+
+
+SRC_URI = "git:///workdir/mxapp;branch=hmi2.0-am62x-qt6;protocol=file \
            file://usr/share/fonts/ttf/msyh.ttc \
            file://usr/bin/run_hmi.sh \
            file://run_hmi.service \
 "
 
-SRCREV = "c61e58655402003292b05edbf8c2415eff4420ba"
+SRCREV = "1df1bb6ac7899a55eca5cddfefa735eb95e872c5"
 
 
 inherit qt6-qmake

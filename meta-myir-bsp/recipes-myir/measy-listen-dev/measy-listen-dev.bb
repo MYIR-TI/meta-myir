@@ -6,22 +6,18 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/LGPL-2.0-only;md5=9427b8ccf5cf3
 PV = "0.1"
 PR = "v1"
 
-SRCREV = "${AUTOREV}"
-SRC_URI = "git:///workdir/MEasyListen-DEV;protocol=file;branch=main \
+SRC_URI = "file://MEasyListen-DEV \
+	   file://libmyir_code.so \
 "
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}"
 
 MEASYAGINGTEST_APP="MEasyListen-DEV"
-
-do_compile () {
-
-	make
-}
 
 dirs755= "/usr \
           /usr/share \
       	  /usr/share/myir_testunit \
+          /usr/lib \
 "
 
 do_install (){
@@ -29,7 +25,8 @@ do_install (){
 		install -m 0755 -d ${D}$d
 	done
 
-	install -m 0755 ${S}/${MEASYAGINGTEST_APP} ${D}/usr/share/myir_testunit/
+	install -m 0755 ${S}/MEasyListen-DEV ${D}/usr/share/myir_testunit/
+	install -m 0755 ${S}/libmyir_code.so ${D}/usr/lib/
 }
 
 FILES:${PN} = "\
@@ -37,6 +34,8 @@ FILES:${PN} = "\
 		/usr/share \
 		/usr/share/myir_testunit \
 		/usr/share/myir_testunit/MEasyListen-DEV \
+		/usr/lib \
+		/usr/lib/libmyir_code.so \
 "
 
 ALLOW_EMPTY:${PN} = "1"
@@ -51,3 +50,5 @@ PACKAGE_DEBUG_SPLIT_STYLE = "debug-with-srcpkg"
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_SYSROOT_STRIP = "1"
+SOLIBS = ".so"
+FILES_SOLIBSDEV = ""

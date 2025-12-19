@@ -1,22 +1,18 @@
 addr_fit=0x90000000
 arch=arm
 args_all=setenv optargs ${optargs} earlycon=ns16550a,mmio32,0x02800000 ${mtdparts}
-args_mmc=run finduuid
+args_mmc=run finduuid;setenv bootargs console=${console} ${optargs} root=${rootfs_dev} rw rootfstype=${mmcrootfstype} loglevel=3
 args_ospi_nand=setenv bootargs console=${console} ${optargs} ubi.mtd=${ospi_nand_bootpart} root=${ospi_nand_bootvolume} rootfstype=ubifs
 baudrate=115200
 board=myc_am62x
-board_name=am62x_skevm
-board_rev=unknown
-board_serial=unknown
-board_software_revision=unknown
+board_name=myc_am62x
 boot=mmc
 boot_fdt=try
 boot_fit=0
 boot_rprocs=if test ${dorprocboot} -eq 1 && test ${boot} = mmc; then rproc init; run boot_rprocs_mmc; fi;
 boot_rprocs_mmc=env set rproc_id; env set rproc_fw; env set secure_suffix; if test ${secure_rprocs} -eq 1; then env set secure_suffix -sec; fi; for i in ${rproc_fw_binaries} ; do if test -z "${rproc_id}" ; then env set rproc_id $i; else env set rproc_fw $i${secure_suffix}; run rproc_load_and_boot_one; env set rproc_id; env set rproc_fw; fi; done
 boot_targets=mmc1 mmc0 usb pxe dhcp
-bootargs=console=ttyS2,115200n8 root=/dev/mmcblk1p2 rw rootfstype=ext4 rootwait loglevel=3
-bootcmd=run set_sd_rootfs;run envboot; run bootcmd_ti_mmc; bootflow scan -lb
+bootcmd=run set_emmc_boot_dev; run set_emmc_bootpart;run set_emmc_rootfs;run envboot; run bootcmd_ti_mmc; bootflow scan -lb
 bootcmd_ti_mmc=run init_${boot}; run update_do_main_cpsw0_qsgmii_phyinit; if test ${do_main_cpsw0_qsgmii_phyinit} -eq 1; then run main_cpsw0_qsgmii_phyinit; fi; run boot_rprocs; if test ${boot_fit} -eq 1; then run get_fit_${boot}; run get_fit_overlaystring; run run_fit; else; run get_kern_${boot}; run get_fdt_${boot}; run get_overlay_${boot}; run run_kern; fi;
 bootdelay=0
 bootdir=/boot
@@ -27,7 +23,7 @@ bootpart=1:2
 bootscript=echo Running bootscript from mmc${mmcdev} ...; source ${loadaddr}
 console=ttyS2,115200n8
 cpu=armv8
-default_device_tree=myir/myd-am62x-6231.dtb
+default_device_tree=myir/myd-am62x-6254.dtb
 dfu_alt_info_emmc=rawemmc raw 0 0x800000 mmcpart 1; rootfs part 0 1; tiboot3.bin.raw raw 0x0 0x400 mmcpart 1; tispl.bin.raw raw 0x400 0x1000 mmcpart 1; u-boot.img.raw raw 0x1400 0x2000 mmcpart 1; u-env.raw raw 0x3400 0x100 mmcpart 1; sysfw.itb.raw raw 0x3600 0x800 mmcpart 1
 dfu_alt_info_mmc=boot part 1 1; rootfs part 1 2; tiboot3.bin fat 1 1; tispl.bin fat 1 1; u-boot.img fat 1 1; uEnv.txt fat 1 1; sysfw.itb fat 1 1
 dfu_alt_info_ospi=tiboot3.bin raw 0x0 0x080000; tispl.bin raw 0x080000 0x200000; u-boot.img raw 0x280000 0x400000; u-boot-env raw 0x680000 0x020000; sysfw.itb raw 0x6c0000 0x100000; rootfs raw 0x800000 0x3800000
@@ -36,11 +32,11 @@ dfu_alt_info_ram=tispl.bin ram 0x80080000 0x200000; u-boot.img ram 0x81000000 0x
 dorprocboot=0
 dtboaddr=0x89000000
 envboot=if mmc dev ${mmcdev}; then if mmc rescan; then echo SD/MMC found on device ${mmcdev}; if test -n "${loadbootscript}" && run loadbootscript; then run bootscript; else if run loadbootenv; then echo Loaded env from ${bootenvfile}; run importbootenv; fi; if test -n $uenvcmd; then echo Running uenvcmd ...; run uenvcmd; fi; fi; fi; fi;
-ethaddr=28:b5:e8:d1:f2:c2
+ethaddr=1c:63:49:25:6b:b5
 fdt_addr_r=0x88000000
 fdtaddr=0x88000000
-fdtcontroladdr=bde66420
-fdtfile=myir/myd-am62x-6231.dtb
+fdtcontroladdr=fde65560
+fdtfile=myir/myd-am62x-6254.dtb
 fdtoverlay_addr_r=0x89500000
 finduuid=part uuid ${boot} ${bootpart} uuid
 get_fdt_mmc=load mmc ${bootpart} ${fdtaddr} ${bootdir}/dtb/${fdtfile}
@@ -77,7 +73,6 @@ pxefile_addr_r=0x80100000
 ramdisk_addr_r=0x88080000
 rd_spec=-
 rdaddr=0x88080000
-rootfs_dev=/dev/mmcblk1p2
 rproc_fw_binaries= 0 /lib/firmware/am62-mcu-m4f0_0-fw
 rproc_load_and_boot_one=if load mmc ${bootpart} $loadaddr ${rproc_fw}; then if rproc load ${rproc_id} ${loadaddr} ${filesize}; then rproc start ${rproc_id}; fi; fi
 run_fit=run get_fit_config; bootm ${addr_fit}#${name_fit_config}${overlaystring}

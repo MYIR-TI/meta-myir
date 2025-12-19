@@ -1,10 +1,15 @@
 [Unit]
 Description=myir-hmi service
-After=multi-user.target
+After=multi-user.target emptty.service
+Wants=emptty.service
 
 [Service]
 Type=simple
-ExecStart=/bin/sh -c '/usr/sbin/mxapp2 -platform linuxfb:fb=/dev/fb1'
+Environment="WAYLAND_DISPLAY=wayland-1"
+Environment="XDG_RUNTIME_DIR=/run/user/1000"
+ExecStartPre=/bin/sh -c 'pkill -9 psplash || true'
+ExecStartPre=/bin/bash -c 'count=0; until [ -S "/run/user/1000/wayland-1" ] || [ $count -gt 30 ]; do sleep 1; count=$((count+1)); done'
+ExecStart=/bin/sh -c '/usr/sbin/mxapp2 -platform wayland'
 
 StandardOutput=journal
 StandardError=journal

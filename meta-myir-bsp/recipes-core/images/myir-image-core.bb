@@ -59,6 +59,7 @@ IMAGE_INSTALL += "\
     bluez-tools \
     bluez5 \
     libdrm \
+    libdrm-tests \
     bc \
     iw \
     watchdog \

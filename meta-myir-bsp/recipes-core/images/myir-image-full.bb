@@ -55,6 +55,7 @@ IMAGE_INSTALL += "\
     bluez5 \
     packagegroup-tools-bluetooth \
     libdrm \
+    libdrm-tests \
     bc \
     iw \
     watchdog \
@@ -125,6 +126,7 @@ IMAGE_INSTALL += "\
     qtsvg \
     qtdeclarative \
     qtconnectivity \
+    qtwebsockets \
     qtgraphs \
     qtmultimedia \
     qtvirtualkeyboard \
@@ -146,4 +148,6 @@ IMAGE_FSTYPES:remove:omapl138 = "ubifs ubi"
 
 
 IMAGE_INSTALL:remove = "docker"
+
+PACKAGECONFIG:append:pn-qtbase = " sql-sqlite"
 

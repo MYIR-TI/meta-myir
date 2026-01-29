@@ -18,7 +18,9 @@ IMAGE_BOOT_FILES += "tiboot3-am62x-gp-evm.bin"
 IMAGE_BOOT_FILES += "tiboot3-am62x-hs-evm.bin"
 
 # Bitmap image tarball for early splashscreen
-IMAGE_BOOT_FILES += "ti_logo_414x97_32bpp.bmp.gz"
+# IMAGE_BOOT_FILES += "ti_logo_414x97_32bpp.bmp.gz"
+# Remove ti_logo file as it's not deployed (u-boot deployment is commented out)
+IMAGE_BOOT_FILES:remove = "ti_logo_414x97_32bpp.bmp.gz"
 
 TFA_BOARD = "lite"
 TFA_K3_SYSTEM_SUSPEND = "1"

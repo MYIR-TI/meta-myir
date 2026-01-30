@@ -37,28 +37,28 @@ do_install (){
 
 	install -m 0755 ${WORKDIR}/root/mfgimage/burn_emmc.sh ${D}/root/mfgimage
 	
-	# Install boot files from myd-am62x-emmc deploy directory if they exist
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin ${D}/root/mfgimage/tiboot3.bin
+	# Install boot files from myd-ym62x-emmc deploy directory if they exist
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tiboot3-am62x-gp-evm.bin ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tiboot3-am62x-gp-evm.bin ${D}/root/mfgimage/tiboot3.bin
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tiboot3-am62x-gp-evm.bin"
 	fi
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin ${D}/root/mfgimage
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tispl.bin ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tispl.bin ${D}/root/mfgimage
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tispl.bin"
 	fi
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img ${D}/root/mfgimage
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/u-boot.img ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/u-boot.img ${D}/root/mfgimage
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/u-boot.img"
 	fi
 	
-	# Install rootfs wic image from myd-am62x-emmc deploy directory
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-core-myd-am62x-emmc.rootfs.wic ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-core-myd-am62x-emmc.rootfs.wic ${D}/root/mfgimage/rootfs.wic
+	# Install rootfs wic image from myd-ym62x-emmc deploy directory
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/myir-image-core-myd-ym62x-emmc.rootfs.wic ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/myir-image-core-myd-ym62x-emmc.rootfs.wic ${D}/root/mfgimage/rootfs.wic
 	else
-		bbwarn "WIC image not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-core-myd-am62x-emmc.rootfs.wic"
+		bbwarn "WIC image not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/myir-image-core-myd-ym62x-emmc.rootfs.wic"
 	fi
 }
 

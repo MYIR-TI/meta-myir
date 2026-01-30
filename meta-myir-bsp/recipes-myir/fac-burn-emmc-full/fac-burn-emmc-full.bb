@@ -39,30 +39,30 @@ do_install (){
 
 	install -m 0755 ${WORKDIR}/root/mfgimage/burn_emmc.sh ${D}/root/mfgimage
 	
-	# Install boot files from myd-am62x-emmc deploy directory if they exist
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin ${D}/root/mfgimage/tiboot3.bin
+	# Install boot files from myd-ym62x-emmc deploy directory if they exist
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tiboot3-am62x-gp-evm.bin ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tiboot3-am62x-gp-evm.bin ${D}/root/mfgimage/tiboot3.bin
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tiboot3-am62x-gp-evm.bin"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tiboot3-am62x-gp-evm.bin"
 	fi
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin ${D}/root/mfgimage
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tispl.bin ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tispl.bin ${D}/root/mfgimage
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/tispl.bin"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/tispl.bin"
 	fi
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img ${D}/root/mfgimage
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/u-boot.img ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/u-boot.img ${D}/root/mfgimage
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/u-boot.img"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/u-boot.img"
 	fi
 	
-	# Install rootfs wic image from myd-am62x-emmc deploy directory
+	# Install rootfs wic image from myd-ym62x-emmc deploy directory
 	# Remove old file first to ensure it's updated
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-full-myd-am62x-emmc.rootfs.wic ]; then
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/myir-image-full-myd-ym62x-emmc.rootfs.wic ]; then
 		rm -f ${D}/root/mfgimage/rootfs.wic
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-full-myd-am62x-emmc.rootfs.wic ${D}/root/mfgimage/rootfs.wic
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/myir-image-full-myd-ym62x-emmc.rootfs.wic ${D}/root/mfgimage/rootfs.wic
 	else
-		bbwarn "WIC image not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-emmc/myir-image-full-myd-am62x-emmc.rootfs.wic"
+		bbwarn "WIC image not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-emmc/myir-image-full-myd-ym62x-emmc.rootfs.wic"
 	fi
 }
 
@@ -79,4 +79,9 @@ FILES:${PN} = "\
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE:${PN} = "fac-burn-emmc-full.service"
 SYSTEMD_AUTO_ENABLE = "enable"
+
+# Skip QA check for buildpaths in WIC image file
+# The WIC image is a binary file that may contain build path references,
+# but this doesn't affect functionality as it's used for flashing EMMC
+INSANE_SKIP:${PN} += "buildpaths"
 

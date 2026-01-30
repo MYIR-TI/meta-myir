@@ -37,30 +37,30 @@ do_install (){
 
 	install -m 0755 ${WORKDIR}/root/mfgimage/burn_emmc.sh ${D}/root/mfgimage
 	
-	# Install boot files from myd-am62x-rt-emmc deploy directory if they exist
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/tiboot3-am62x-gp-evm.bin ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/tiboot3-am62x-gp-evm.bin ${D}/root/mfgimage/tiboot3.bin
+	# Install boot files from myd-ym62x-rt-emmc deploy directory if they exist
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/tiboot3-am62x-gp-evm.bin ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/tiboot3-am62x-gp-evm.bin ${D}/root/mfgimage/tiboot3.bin
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/tiboot3-am62x-gp-evm.bin"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/tiboot3-am62x-gp-evm.bin"
 	fi
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/tispl.bin ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/tispl.bin ${D}/root/mfgimage
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/tispl.bin ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/tispl.bin ${D}/root/mfgimage
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/tispl.bin"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/tispl.bin"
 	fi
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/u-boot.img ]; then
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/u-boot.img ${D}/root/mfgimage
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/u-boot.img ]; then
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/u-boot.img ${D}/root/mfgimage
 	else
-		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/u-boot.img"
+		bbwarn "Boot file not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/u-boot.img"
 	fi
 	
-	# Install rootfs wic image from myd-am62x-rt-emmc deploy directory
+	# Install rootfs wic image from myd-ym62x-rt-emmc deploy directory
 	# Remove old file first to ensure it's updated
-	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/myir-image-full-myd-am62x-rt-emmc.rootfs.wic ]; then
+	if [ -f ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/myir-image-full-myd-ym62x-rt-emmc.rootfs.wic ]; then
 		rm -f ${D}/root/mfgimage/rootfs.wic
-		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/myir-image-full-myd-am62x-rt-emmc.rootfs.wic ${D}/root/mfgimage/rootfs.wic
+		install -m 0755 ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/myir-image-full-myd-ym62x-rt-emmc.rootfs.wic ${D}/root/mfgimage/rootfs.wic
 	else
-		bbwarn "WIC image not found: ${DEPLOY_DIR_IMAGE}/../myd-am62x-rt-emmc/myir-image-full-myd-am62x-rt-emmc.rootfs.wic"
+		bbwarn "WIC image not found: ${DEPLOY_DIR_IMAGE}/../myd-ym62x-rt-emmc/myir-image-full-myd-ym62x-rt-emmc.rootfs.wic"
 	fi
 }
 

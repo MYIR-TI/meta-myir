@@ -27,7 +27,7 @@ KERNEL_GIT_PROTOCOL = "https"
 
 BRANCH ?= "develop-ym62x-linux-6.12.y_11.01.05.03"
 
-SRCREV ?= "a3335542101189fffde33be4f30346aac3d00e07"
+SRCREV ?= "c6adf24120ad3bf800df8ebbfaaba44921e094c3"
 #SRCREV = "${AUTOREV}"
 PV = "6.12.35+git"
 

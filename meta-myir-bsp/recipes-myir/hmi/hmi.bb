@@ -9,14 +9,14 @@ S = "${WORKDIR}/git"
 
 
 
-SRC_URI = "git:///workdir/mxapp;branch=hmi2.0-am62x-qt6;protocol=file \
+SRC_URI = "git://github.com/MYiR-Dev/mxapp.git;protocol=https;branch=hmi2.0-am62x-qt6 \
            file://usr/share/fonts/ttf/msyh.ttc \
            file://usr/bin/run_hmi.sh \
            file://run_hmi.service \
 "
 
-SRCREV = "1df1bb6ac7899a55eca5cddfefa735eb95e872c5"
-
+SRCREV = "2a45cf4308e01fb665d56ab08bd794e244be1fdd"
+BRANCH = "hmi2.0-am62x-qt6"
 
 inherit qt6-qmake
 inherit systemd
